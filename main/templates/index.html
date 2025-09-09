@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автосалон Cuss&Tschuss</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/logo.png' %}">
+</head>
+<body>
+    <header>
+        <img src="{% static 'img/logo.png' %}" alt="logo">
+        <nav>
+            <a href="#hero">О нас</a>
+            <a href="#catalog">Каталог</a>
+            <a href="#contacts">Контакты</a>
+            <a href="admin/">Для администраторов</a>
+        </nav>
+    </header>
+    <main>
+        <div id="hero">
+            <div class="text">
+                <h1>Автосалон Cuss&Tschuss</h1>
+                <h2>Найдите<br>автомобиль<br>своей мечты</h2>
+            </div>
+        </div>
+        <div id="catalog">
+            <hr>
+            <h1>Каталог автомобилей</h1>
+            <div class="car-wrapper">
+                {% for car in cars %}
+                    <div class="car-card">
+                        <img src="{{ car.preview.url }}" alt="{{ car.name }}">
+                        <h3>{{ car.name }}</h3>
+                        <p>{{ car.description }}</p>
+                        <span class="price">Цена: {{ car.price }} руб.</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <hr>
+        <div class="copyright">
+            © 2023 Автосалон Cuss&Tschuss. Все права защищены.
+        </div>
+        <div id="contacts">
+            <a href="https://vk.com/"><img src="{% static 'img/vk.svg' %}" alt="vk" width="30px"></a>
+            <a href="https://t.me/"><img src="{% static 'img/tg.webp' %}" alt="tg" width="30px"></a>
+        </div>
+    </footer>
+</body>
+</html>
